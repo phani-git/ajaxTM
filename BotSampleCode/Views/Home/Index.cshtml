@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<div id="div1">
+    <h2>Index</h2>
+</div>
+
+<input class="btn btn-primary" name="submitButton" id="btnSave" value="Save" type="button">
+
+<script type="text/javascript">
+
+
+        $("#btnSave").click(function () {
+            var std = {};
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("myvaluefromDB")',
+                data: '',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    debugger
+                    $("#div1").append(data);
+                }
+            });
+            return false;
+        });
+</script>
